@@ -91,21 +91,30 @@ MonoBehaviour:
   cameraSprintSpeed: 10
   cameraSideMovRotValue: 1
   cameraFrontMovRotValue: 1
-  jumpVelocity: 10
+  jumpVelocity: 11.5
   extraGravity: -3
   jumpTime: 1
   jumpFallOf:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.0000010179356
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: 1.7358773
+      outSlope: 1.7358773
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.1670117
+    - serializedVersion: 3
+      time: 0.35755762
+      value: 0.5600219
+      inSlope: 1.4991767
+      outSlope: 1.4991767
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 1
