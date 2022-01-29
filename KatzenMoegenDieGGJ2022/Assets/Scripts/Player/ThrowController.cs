@@ -16,7 +16,7 @@ public class ThrowController : MonoBehaviour
     public float catchDelay;
     
     bool hasBallInHand;
-
+    public bool boxInHand;
     private void Awake()
     {
         pushEffect = ballPositionAnker.GetComponentInChildren<VisualEffect>();
@@ -45,7 +45,7 @@ public class ThrowController : MonoBehaviour
 
     public void Throw()
     {
-        if (hasBallInHand)
+        if (hasBallInHand && !boxInHand)
         {
             anim.SetTrigger("shot");
             StartCoroutine(ThrowCourotine(throwDelay));

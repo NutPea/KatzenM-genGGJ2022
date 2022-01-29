@@ -6,15 +6,25 @@ public class LowGravity : MonoBehaviour
 {
     public float lowgravityValue;
     private float gravityResetValue;
+    GravityManager gm;
 
     private void Start()
     {
+        gm = GetComponent<GravityManager>();
         gravityResetValue = Physics.gravity.y;
     }
     public void ActivateLowGravity()
     {
+        if(gm.upSideDown)
+        {
+            Physics.gravity = new Vector3(0, -lowgravityValue, 0);
+        }
+        else
+        {
+            Physics.gravity = new Vector3(0, lowgravityValue, 0);
+        }
         
-        StartCoroutine(fadeLowGravity());
+        
         
     }
     IEnumerator fadeLowGravity()
@@ -32,7 +42,16 @@ public class LowGravity : MonoBehaviour
     {
         Debug.Log(gravityResetValue);
 
-        Physics.gravity = new Vector3(0, gravityResetValue, 0);
-        ;
+        if (gm.upSideDown)
+        {
+            Physics.gravity = new Vector3(0, -gravityResetValue, 0);
+        }
+        else
+        {
+            Physics.gravity = new Vector3(0, gravityResetValue, 0);
+        }
+
+        
+        
     }
 }
