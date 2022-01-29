@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,37 +8,55 @@ public class PlayerController : MonoBehaviour
 
     Transform playerCamera;
     Rigidbody rb;
-    Animator cameraAnimator;
-    public float sensetivity = 30;
+    PlayerInput inputActions;
+    private Vector2 playerInputVector;
+    [HideInInspector]public bool upsideDown;
 
+    [Header("//------------------PlayerMovement---------------------//")]
     public float movementSpeed = 1f;
     public float sprintSpeed = 10f;
-    float currentMovementSpeed;
     bool isSprinting;
-
-    public float jumpVelocity = 300f;
     public LayerMask groundLayer;
     public float groundCheckDistance = 1f;
-
-    bool coyoteTimeGroundCheck = true;
-    public float coyoteTime = 1f;
-    float currentCoyoteTime;
+    float currentMovementSpeed;
 
 
-    PlayerInput inputActions;
+    [HideInInspector] public bool stopMovementUntilHitGroundAgain;
+    [Header("//------------------Camera---------------------//")]
+    public float sensetivity = 30;
     float cameraPitch = 0.0f;
-    private Vector2 playerInputVector;
 
-    Vector3 cameraStartVector;
+
+    [Header("//------------------CameraMovement---------------------//")]
     public Vector3 cameraMovementVector;
-    public Vector3 toMoveDownWalkVector;
-    public Vector3 toMoveUpWalkVector;
-
     public float cameraWalkSpeed;
     public float cameraSprintSpeed;
+    [Space(10)]
+    public float cameraSideMovRotValue = 1;
+    public float cameraFrontMovRotValue = 1;
 
+    Vector3 toMoveDownWalkVector;
+    Vector3 toMoveUpWalkVector;
+    Vector3 cameraStartVector;
     float currentCameraSpeed;
-    public float cameraMovRotValue;
+
+    [Header("//----------------------Jump------------------------//")]
+    public float jumpVelocity = 10f;
+    public float extraGravity = -3f;
+    public float jumpTime = 1f;
+    public AnimationCurve jumpFallOf;
+    public float coyoteTime = 1f;
+    public float jumpBufferTimer = 1f;
+
+    public float currentJumpBufferTimer;
+    float currentCoyoteTime;
+    [HideInInspector] public bool forceAired;
+    bool jumpButtonPressed;
+    bool isJumping;
+    float velocityY;
+    bool isGroundedTrigger;
+    float currentJumpTime;
+    bool coyoteTimeGroundCheck = true;
 
     private void Awake()
     {
@@ -54,7 +73,6 @@ public class PlayerController : MonoBehaviour
         playerCamera = Camera.main.GetComponent<Transform>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        cameraAnimator = playerCamera.GetComponent<Animator>();
 
         rb = GetComponent<Rigidbody>();
         currentCoyoteTime = coyoteTime;
@@ -65,6 +83,8 @@ public class PlayerController : MonoBehaviour
         toMoveDownWalkVector = playerCamera.transform.localPosition - cameraMovementVector;
         toMoveUpWalkVector = playerCamera.transform.localPosition + cameraMovementVector;
         currentCameraSpeed = cameraWalkSpeed;
+        currentJumpTime = jumpTime;
+        currentJumpBufferTimer = jumpBufferTimer;
     }
 
     private void OnEnable()
@@ -86,6 +106,9 @@ public class PlayerController : MonoBehaviour
         cameraPitch = Mathf.Clamp(cameraPitch, -90, 90f);
 
         playerCamera.localEulerAngles = Vector3.right * cameraPitch;
+
+
+
         transform.Rotate(Vector3.up * mouseDelta.x * sensetivity);
     }
 
@@ -93,7 +116,11 @@ public class PlayerController : MonoBehaviour
     {
         if (coyoteTimeGroundCheck)
         {
-            rb.AddForce(Vector3.up * jumpVelocity * Time.fixedDeltaTime, ForceMode.Impulse);
+            isJumping = true;
+        }
+        else
+        {
+            jumpButtonPressed = true;
         }
     }
 
@@ -116,6 +143,20 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        #region ChangeGravityGate
+        if (stopMovementUntilHitGroundAgain)
+        {
+            if (IsGrounded())
+            {
+                stopMovementUntilHitGroundAgain = false;
+            }
+            else
+            {
+                return;
+            }
+        }
+        #endregion
+
         if (!IsGrounded())
         {
             if (currentCoyoteTime < 0)
@@ -141,48 +182,95 @@ public class PlayerController : MonoBehaviour
 
     bool rotLeft;
     bool rotRight;
+    bool rotSideBack;
+
+    bool rotFront;
     bool rotBack;
+    bool rotVerticalBack;
     private void CamMovRot()
     {
         if (playerInputVector.x > 0)
         {
-            rotBack = true;
+            rotSideBack = true;
             if (!rotRight)
             {
-                playerCamera.transform.eulerAngles += new Vector3(0, 0, -cameraMovRotValue);
+                playerCamera.transform.eulerAngles += new Vector3(0, 0, -cameraSideMovRotValue);
                 rotRight = true;
             }
         }
         else if (playerInputVector.x < 0)
         {
-            rotBack = true;
+            rotSideBack = true;
             if (!rotLeft)
             {
-                playerCamera.transform.eulerAngles += new Vector3(0, 0, cameraMovRotValue);
+                playerCamera.transform.eulerAngles += new Vector3(0, 0, cameraSideMovRotValue);
                 rotLeft = true;
             }
         }
         else
         {
-            if (rotBack)
+            if (rotSideBack)
             {
                 if (rotLeft)
                 {
-                    playerCamera.transform.eulerAngles += new Vector3(0, 0, -cameraMovRotValue);
+                    playerCamera.transform.eulerAngles += new Vector3(0, 0, -cameraSideMovRotValue);
                 }
                 if (rotRight)
                 {
-                    playerCamera.transform.eulerAngles += new Vector3(0, 0, cameraMovRotValue);
+                    playerCamera.transform.eulerAngles += new Vector3(0, 0, cameraSideMovRotValue);
                 }
 
                 rotLeft = false;
                 rotRight = false;
-                rotBack = false;
+                rotSideBack = false;
 
             }
         }
-    }
 
+        if (playerInputVector.y > 0)
+        {
+            rotVerticalBack = true;
+            if (!rotFront)
+            {
+                playerCamera.transform.eulerAngles += new Vector3(cameraFrontMovRotValue, 0,0);
+                rotFront = true;
+            }
+        }
+        else if (playerInputVector.y < 0)
+        {
+            rotVerticalBack = true;
+            if (!rotBack)
+            {
+                playerCamera.transform.eulerAngles += new Vector3(cameraFrontMovRotValue, 0, 0);
+                rotBack = true;
+            }
+        }
+        else
+        {
+            if (rotVerticalBack)
+            {
+                if (rotFront)
+                {
+                    playerCamera.transform.eulerAngles += new Vector3(cameraFrontMovRotValue, 0, 0);
+                }
+                if (rotBack)
+                {
+                    playerCamera.transform.eulerAngles += new Vector3(-cameraFrontMovRotValue, 0, 0);
+                }
+
+                rotFront = false;
+                rotBack = false;
+                rotVerticalBack = false;
+
+            }
+        }
+
+
+
+
+
+
+    }
     private void CameraMovement()
     {
         if (playerInputVector != Vector2.zero && IsGrounded())
@@ -236,21 +324,98 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        #region ChangeGravityGate
+        float velocityValue = 1;
+        if (stopMovementUntilHitGroundAgain)
+        {
+            if (IsGrounded())
+            {
+                stopMovementUntilHitGroundAgain = false;
+            }
+            else
+            {
+                velocityValue = 0;
+            }
+        }
+        #endregion
+
+        if (IsGrounded())
+        {
+            if (!isGroundedTrigger)
+            {
+                velocityY = 0.0f;
+                rb.velocity = new Vector3(rb.velocity.x,0,rb.velocity.z);
+                isGroundedTrigger = true;
+            }
+        }
+        else
+        {
+            isGroundedTrigger = false;
+            if (upsideDown)
+            {
+                velocityY += (Physics.gravity.y - extraGravity) * Time.deltaTime * Time.deltaTime;
+            }
+            else
+            {
+                velocityY += (Physics.gravity.y + extraGravity) * Time.deltaTime *Time.deltaTime;
+            }
+        }
+
+
+        if (jumpButtonPressed)
+        {
+            if(currentJumpBufferTimer < 0)
+            {
+                currentJumpBufferTimer = jumpBufferTimer;
+                jumpButtonPressed = false;
+            }
+            else
+            {
+                currentJumpBufferTimer -= Time.deltaTime;
+            }
+
+
+            if (IsGrounded())
+            {
+                isJumping = true;
+                currentJumpBufferTimer = jumpBufferTimer;
+                currentJumpTime = jumpTime;
+                jumpButtonPressed = false;
+            }
+            
+        }
+
+
+        Vector3 jumpVector = Vector3.zero;
+
+        if (isJumping)
+        {
+            if(currentJumpTime < 0)
+            {
+                currentJumpTime = jumpTime;
+                isJumping = false;
+            }
+            else
+            {
+                float percentage = currentJumpTime / jumpTime;
+                float jumpForce = jumpFallOf.Evaluate(percentage);
+                jumpVector = transform.up * jumpForce * jumpVelocity * Time.deltaTime;
+                currentJumpTime -= Time.deltaTime;
+            }
+        }
+
         playerInputVector = new Vector2(inputActions.Keyboard.Horizontal.ReadValue<float>(), inputActions.Keyboard.Vertical.ReadValue<float>());
         playerInputVector = playerInputVector.normalized;
 
-        Vector3 horPlayerMovement = playerCamera.right * playerInputVector.x * currentMovementSpeed * Time.fixedDeltaTime;
-        Vector3 vertPlayerMovement = transform.forward * - playerInputVector.y * currentMovementSpeed * Time.fixedDeltaTime;
-
-        rb.MovePosition(transform.position + horPlayerMovement + vertPlayerMovement);
-
+        Vector3 horPlayerMovement = playerCamera.right * playerInputVector.x * currentMovementSpeed * Time.fixedDeltaTime * velocityValue;
+        Vector3 vertPlayerMovement = transform.forward * - playerInputVector.y * currentMovementSpeed * Time.fixedDeltaTime * velocityValue;
         
+        rb.MovePosition(transform.position + horPlayerMovement + vertPlayerMovement + jumpVector + Vector3.up * velocityY);
     }
-
 
     public bool IsGrounded()
     {
-        return Physics.Raycast(transform.position, -Vector3.up, groundCheckDistance, groundLayer);
+        return Physics.Raycast(transform.position, -transform.up, groundCheckDistance, groundLayer) && !forceAired;
 
     }
 
