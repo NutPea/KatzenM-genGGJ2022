@@ -85,7 +85,7 @@ PrefabInstance:
     - target: {fileID: -7876575907161866336, guid: b5f41361cf2af2743b464a8467927b1d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 6472729eb90444943826edd4eb50f4e2, type: 2}
+      objectReference: {fileID: 2100000, guid: b171138c9bd8ca2469037255ff05da84, type: 2}
     - target: {fileID: 919132149155446097, guid: b5f41361cf2af2743b464a8467927b1d, type: 3}
       propertyPath: m_Name
       value: Ball_LowP_01
@@ -93,7 +93,7 @@ PrefabInstance:
     - target: {fileID: 2275435226505317125, guid: b5f41361cf2af2743b464a8467927b1d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 6472729eb90444943826edd4eb50f4e2, type: 2}
+      objectReference: {fileID: 2100000, guid: b171138c9bd8ca2469037255ff05da84, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5f41361cf2af2743b464a8467927b1d, type: 3}
 --- !u!4 &1791793301735848235 stripped
