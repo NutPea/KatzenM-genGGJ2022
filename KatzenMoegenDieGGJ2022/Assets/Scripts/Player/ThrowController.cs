@@ -14,7 +14,7 @@ public class ThrowController : MonoBehaviour
 
     public float throwDelay;
     public float catchDelay;
-
+    
     bool hasBallInHand;
 
     private void Awake()
@@ -68,6 +68,7 @@ public class ThrowController : MonoBehaviour
 
     IEnumerator ThrowCourotine(float time)
     {
+       
         yield return new WaitForSeconds(time);
         ball.Throw(mainCam.transform.forward);
         pushEffect.Play();
@@ -75,7 +76,22 @@ public class ThrowController : MonoBehaviour
 
     IEnumerator CatchRoutine(float time)
     {
-        yield return new WaitForSeconds(time);
+        float t = time;
+        while(t > 0)
+        {
+            t -= Time.deltaTime / time;
+            ball.SetDissolve(t);
+            yield return new WaitForEndOfFrame();
+        }
+
         ball.ResetToHand(ballPositionAnker);
+
+        while (t < time)
+        {
+            t += Time.deltaTime / time;
+            ball.SetDissolve(t);
+            yield return new WaitForEndOfFrame();
+            Debug.Log(t);
+        }
     }
 }

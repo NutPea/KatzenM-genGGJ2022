@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.VFX;
 public class BallController : MonoBehaviour
 {
 
@@ -18,13 +19,22 @@ public class BallController : MonoBehaviour
     private bool isInHand = true;
     public UnityEvent returnEvent;
 
+    public MeshRenderer ballLit1;
+    public MeshRenderer ballLit2;
+    public MeshRenderer sphereOutside;
+    public VisualEffect ballIdleEffect;
+
+    float minValue = 0.1f;
+    int clipKey = -1;
+
     private void Awake()
     {
         returnEvent = new UnityEvent();
     }
     private void Start()
     {
-        
+        if (clipKey == -1)
+            clipKey = Shader.PropertyToID("_Clip");
         rb = GetComponent<Rigidbody>();
         
         rb.useGravity = false;
@@ -110,11 +120,15 @@ public class BallController : MonoBehaviour
         
     }
 
-    public IEnumerator StartReset(Transform handPosition)
+    public void SetDissolve(float alpha)
     {
-        yield return new WaitForSeconds(1);
-        ResetToHand(handPosition);
+        ballIdleEffect.SetFloat(clipKey, alpha);
+        ballLit1.material.SetFloat(clipKey, Mathf.Lerp(1, -0.1f, alpha));
+        ballLit2.material.SetFloat(clipKey, Mathf.Lerp(1, -0.1f, alpha));
+        sphereOutside.material.SetFloat(clipKey, alpha);
     }
+
+   
 
     IEnumerator AccelerateTo(float speed, float time, Vector3 direction)
     {
