@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 public class BallController : MonoBehaviour
 {
     
@@ -15,9 +15,15 @@ public class BallController : MonoBehaviour
     Collider col;
     private bool bounceCooldown;
     private bool isInHand = true;
+    public UnityEvent returnEvent;
 
+    private void Awake()
+    {
+        returnEvent = new UnityEvent();
+    }
     private void Start()
     {
+        
         rb = GetComponent<Rigidbody>();
         
         rb.useGravity = false;
@@ -50,7 +56,7 @@ public class BallController : MonoBehaviour
         isStuck = true;
         col.enabled = false;
         isInHand = true;
-
+        returnEvent.Invoke();
     }
 
     private void FixedUpdate()
@@ -133,7 +139,7 @@ public class BallController : MonoBehaviour
             yield return new WaitForEndOfFrame();
             time += Time.deltaTime * 8;
             Vector3 squash = new Vector3(1 / squashCurve.Evaluate(time), 1 / squashCurve.Evaluate(time), 1 * squashCurve.Evaluate(time));
-            transform.localScale = squash * 0.25f;
+            transform.localScale = squash * 0.5f;
         }
         
     }

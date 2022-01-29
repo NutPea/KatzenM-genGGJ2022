@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class ThrowController : MonoBehaviour
 {
     public BallController ball;
     PlayerInput inputActions;
     public Transform ballPositionAnker;
+    VisualEffect pushEffect;
     private void Awake()
     {
+        pushEffect = ballPositionAnker.GetComponentInChildren<VisualEffect>();
         inputActions = new PlayerInput();
         inputActions.Keyboard.Throw.performed += ctx => Throw();
 
@@ -35,7 +38,7 @@ public class ThrowController : MonoBehaviour
     {
         
         ball.Throw(ballPositionAnker.transform.forward);
-        
+        pushEffect.Play();
         
     }
 

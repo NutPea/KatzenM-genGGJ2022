@@ -20,7 +20,7 @@ public class HoleButton : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Ball") && rb.velocity.magnitude <= 0.01f && !isActive)
+        if (other.CompareTag("Ball") && rb.velocity.magnitude <= 0.15f && !isActive)
         {
             ActivateButton();
             isActive = true;
