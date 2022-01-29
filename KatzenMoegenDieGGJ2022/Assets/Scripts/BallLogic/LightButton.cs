@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
+using UnityEngine.Events;
 
 public class LightButton : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class LightButton : MonoBehaviour
     private MeshRenderer mr;
     private static int emissionColorKey = -1;
     public bool isActive;
+    public UnityEvent activateEvent;
+    public UnityEvent deactivateEvent;
 
     private void Start()
     {

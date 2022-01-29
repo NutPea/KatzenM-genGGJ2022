@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 public class PlayerController : MonoBehaviour
 {
 
@@ -58,6 +58,14 @@ public class PlayerController : MonoBehaviour
     float currentJumpTime;
     bool coyoteTimeGroundCheck = true;
 
+    [Header("//------------------CutScene---------------//")]
+    public float moveTime;
+    bool blockPlayerInput;
+    float currentMoveTime;
+    public UnityEvent onCutSceneStart;
+    public UnityEvent onCutSceneEnd;
+
+
     private void Awake()
     {
         inputActions = new PlayerInput();
@@ -85,6 +93,8 @@ public class PlayerController : MonoBehaviour
         currentCameraSpeed = cameraWalkSpeed;
         currentJumpTime = jumpTime;
         currentJumpBufferTimer = jumpBufferTimer;
+
+        StartCoroutine(StartCutScene(moveTime));
     }
 
     private void OnEnable()
@@ -99,6 +109,8 @@ public class PlayerController : MonoBehaviour
 
     public void MouseMovement()
     {
+        if (blockPlayerInput) return;
+
         Vector2 mouseDelta = inputActions.Keyboard.MouseMovement.ReadValue<Vector2>();
         mouseDelta = mouseDelta.normalized;
 
@@ -107,13 +119,13 @@ public class PlayerController : MonoBehaviour
 
         playerCamera.localEulerAngles = Vector3.right * cameraPitch;
 
-
-
         transform.Rotate(Vector3.up * mouseDelta.x * sensetivity);
     }
 
     public void Jump()
     {
+        if (blockPlayerInput) return;
+
         if (coyoteTimeGroundCheck)
         {
             isJumping = true;
@@ -126,6 +138,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnSprintStart()
     {
+        if (blockPlayerInput) return;
+
         currentMovementSpeed = sprintSpeed;
         isSprinting = true;
     }
@@ -404,8 +418,11 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        playerInputVector = new Vector2(inputActions.Keyboard.Horizontal.ReadValue<float>(), inputActions.Keyboard.Vertical.ReadValue<float>());
-        playerInputVector = playerInputVector.normalized;
+        if (!blockPlayerInput)
+        {
+            playerInputVector = new Vector2(inputActions.Keyboard.Horizontal.ReadValue<float>(), inputActions.Keyboard.Vertical.ReadValue<float>());
+            playerInputVector = playerInputVector.normalized;
+        }
 
         Vector3 horPlayerMovement = playerCamera.right * playerInputVector.x * currentMovementSpeed * Time.fixedDeltaTime * velocityValue;
         Vector3 vertPlayerMovement = transform.forward * - playerInputVector.y * currentMovementSpeed * Time.fixedDeltaTime * velocityValue;
@@ -416,7 +433,16 @@ public class PlayerController : MonoBehaviour
     public bool IsGrounded()
     {
         return Physics.Raycast(transform.position, -transform.up, groundCheckDistance, groundLayer) && !forceAired;
+    }
 
+    public IEnumerator StartCutScene(float time)
+    {
+        onCutSceneStart.Invoke();
+        blockPlayerInput = true;
+        playerInputVector = new Vector2(0, -1);
+        yield return new WaitForSeconds(time);
+        blockPlayerInput = false;
+        onCutSceneEnd.Invoke();
     }
 
 
