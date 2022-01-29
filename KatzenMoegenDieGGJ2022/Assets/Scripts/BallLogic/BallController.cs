@@ -4,9 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.VFX;
 public class BallController : MonoBehaviour
-{
-
-
+{   
     public float speed;
     public float maxspeed;
     Rigidbody rb;
@@ -29,6 +27,7 @@ public class BallController : MonoBehaviour
 
     private void Awake()
     {
+        
         returnEvent = new UnityEvent();
     }
     private void Start()
@@ -58,6 +57,10 @@ public class BallController : MonoBehaviour
 
     public void ResetToHand(Transform handPosition)
     {
+        if(rb == null)
+            rb = GetComponent<Rigidbody>();
+        if (col == null)
+            col = GetComponent<Collider>();
         rb.isKinematic = true;
         transform.position = handPosition.position;
         transform.parent = handPosition;

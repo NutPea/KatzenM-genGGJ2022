@@ -26,9 +26,7 @@ public class ThrowController : MonoBehaviour
 
         inputActions.Keyboard.ReturnBall.performed += ctx => RestorePosition();
         ball = FindObjectOfType<BallController>();
-        ball.transform.position = ballPositionAnker.position;
-        ball.transform.parent = ballPositionAnker;
-        ball.isStuck = true;
+        ball.ResetToHand(ballPositionAnker);
 
         hasBallInHand = true;
     }
@@ -76,7 +74,7 @@ public class ThrowController : MonoBehaviour
 
     IEnumerator CatchRoutine(float time)
     {
-        float t = time;
+        float t = 1;
         while(t > 0)
         {
             t -= Time.deltaTime / time;
@@ -86,7 +84,7 @@ public class ThrowController : MonoBehaviour
 
         ball.ResetToHand(ballPositionAnker);
 
-        while (t < time)
+        while (t < 1)
         {
             t += Time.deltaTime / time;
             ball.SetDissolve(t);

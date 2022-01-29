@@ -209,6 +209,10 @@ MonoBehaviour:
   returnEvent:
     m_PersistentCalls:
       m_Calls: []
+  ballLit1: {fileID: 4664442518957603908}
+  ballLit2: {fileID: 5591309613397428449}
+  sphereOutside: {fileID: 5028901828357863856}
+  ballIdleEffect: {fileID: 1749809666}
 --- !u!54 &5912006059339103469
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -303,6 +307,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ac2438231c3e2c64e8cc73eced1ec926, type: 3}
   m_PrefabInstance: {fileID: 5912006060116780340}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &5028901828357863856 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: ac2438231c3e2c64e8cc73eced1ec926, type: 3}
+  m_PrefabInstance: {fileID: 5912006060116780340}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5912006060172198884
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -363,5 +372,15 @@ PrefabInstance:
 --- !u!4 &6161226987596162063 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b5f41361cf2af2743b464a8467927b1d, type: 3}
+  m_PrefabInstance: {fileID: 5912006060172198884}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &4664442518957603908 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7876575907161866336, guid: b5f41361cf2af2743b464a8467927b1d, type: 3}
+  m_PrefabInstance: {fileID: 5912006060172198884}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &5591309613397428449 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2275435226505317125, guid: b5f41361cf2af2743b464a8467927b1d, type: 3}
   m_PrefabInstance: {fileID: 5912006060172198884}
   m_PrefabAsset: {fileID: 0}

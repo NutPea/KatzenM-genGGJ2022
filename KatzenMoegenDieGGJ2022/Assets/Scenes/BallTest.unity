@@ -679,11 +679,6 @@ Transform:
   m_Father: {fileID: 338819966}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!23 &729208824 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 5028901828357863856, guid: fd83d7689f2e51e42a98557064309177, type: 3}
-  m_PrefabInstance: {fileID: 5912006059638343908}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &846099464 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5912006059339103468, guid: fd83d7689f2e51e42a98557064309177, type: 3}
@@ -706,6 +701,10 @@ PrefabInstance:
       propertyPath: ball
       value: 
       objectReference: {fileID: 846099464}
+    - target: {fileID: 4635126761069786416, guid: f0b8688726c78c843a107f0add2cd85a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5330398018560869701, guid: f0b8688726c78c843a107f0add2cd85a, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -756,11 +755,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0b8688726c78c843a107f0add2cd85a, type: 3}
---- !u!23 &980490867 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 4664442518957603908, guid: fd83d7689f2e51e42a98557064309177, type: 3}
-  m_PrefabInstance: {fileID: 5912006059638343908}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &980964210
 GameObject:
   m_ObjectHideFlags: 0
@@ -1155,11 +1149,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!23 &1391303432 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 5591309613397428449, guid: fd83d7689f2e51e42a98557064309177, type: 3}
-  m_PrefabInstance: {fileID: 5912006059638343908}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1459061906
 GameObject:
   m_ObjectHideFlags: 0
@@ -1495,11 +1484,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!2083052967 &1749809666 stripped
-VisualEffect:
-  m_CorrespondingSourceObject: {fileID: 1749809666, guid: fd83d7689f2e51e42a98557064309177, type: 3}
-  m_PrefabInstance: {fileID: 5912006059638343908}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1924894550
 GameObject:
   m_ObjectHideFlags: 0
@@ -1827,22 +1811,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball
       objectReference: {fileID: 0}
-    - target: {fileID: 5912006059339103468, guid: fd83d7689f2e51e42a98557064309177, type: 3}
-      propertyPath: ballLit1
-      value: 
-      objectReference: {fileID: 980490867}
-    - target: {fileID: 5912006059339103468, guid: fd83d7689f2e51e42a98557064309177, type: 3}
-      propertyPath: ballLit2
-      value: 
-      objectReference: {fileID: 1391303432}
-    - target: {fileID: 5912006059339103468, guid: fd83d7689f2e51e42a98557064309177, type: 3}
-      propertyPath: sphereOutside
-      value: 
-      objectReference: {fileID: 729208824}
-    - target: {fileID: 5912006059339103468, guid: fd83d7689f2e51e42a98557064309177, type: 3}
-      propertyPath: ballIdleEffect
-      value: 
-      objectReference: {fileID: 1749809666}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd83d7689f2e51e42a98557064309177, type: 3}
 --- !u!1001 &6002016931618146668
