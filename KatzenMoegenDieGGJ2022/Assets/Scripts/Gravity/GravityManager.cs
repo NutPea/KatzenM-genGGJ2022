@@ -45,7 +45,7 @@ public class GravityManager : MonoBehaviour
         RotatePlayer();
     }
 
-    public void RotatePlayer()
+    void RotatePlayer()
     {
         if (upSideDown)
         {

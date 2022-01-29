@@ -9,6 +9,7 @@ public class Push : MonoBehaviour
     bool hasBox = false;
     public Transform kistenAnker;
     Rigidbody Box;
+    BoxCollider boxBoxCollider;
     Camera cam;
     
     private void Awake()
@@ -41,7 +42,7 @@ public class Push : MonoBehaviour
     {
         RaycastHit rch;
         
-        if(Physics.Raycast(tc.ballPositionAnker.position, cam.transform.forward, out rch, 2.0f) && rch.transform.CompareTag("Kiste"))
+        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out rch, 2.0f) && rch.transform.CompareTag("Kiste"))
         {
             hasBox = true;
             tc.boxInHand = true;
@@ -49,6 +50,8 @@ public class Push : MonoBehaviour
             rch.transform.position = kistenAnker.position;
             rch.rigidbody.isKinematic = true;
             Box = rch.rigidbody;
+            boxBoxCollider = rch.transform.GetComponent<BoxCollider>();
+            boxBoxCollider.enabled = false;
         }
     }
 
@@ -57,6 +60,7 @@ public class Push : MonoBehaviour
         Box.isKinematic = false;
         Box.transform.parent = null;
         tc.boxInHand = false;
+        boxBoxCollider.enabled = true;
         Box = null;
     }
 

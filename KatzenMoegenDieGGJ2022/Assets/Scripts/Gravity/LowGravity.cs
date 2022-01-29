@@ -4,54 +4,45 @@ using UnityEngine;
 
 public class LowGravity : MonoBehaviour
 {
-    public float lowgravityValue;
-    private float gravityResetValue;
+    public float lowgravityValueMultiplyier;
     GravityManager gm;
+    bool isLowGravity;
 
     private void Start()
     {
         gm = GetComponent<GravityManager>();
-        gravityResetValue = Physics.gravity.y;
     }
-    public void ActivateLowGravity()
+
+    public void ChangeGravity()
     {
-        if(gm.upSideDown)
+        if (isLowGravity)
         {
-            Physics.gravity = new Vector3(0, -lowgravityValue, 0);
+            RestoreNormalGravity();
+            isLowGravity = false;
         }
         else
         {
-            Physics.gravity = new Vector3(0, lowgravityValue, 0);
-        }
-        
-        
-        
-    }
-    IEnumerator fadeLowGravity()
-    {
-        float time = 1;
-        while( time > 0)
-        {
-            yield return new WaitForEndOfFrame();
-            time -= Time.deltaTime;
-            Physics.gravity = new Vector3(0,Mathf.Lerp(lowgravityValue, gravityResetValue, time),0);
+            ActivateLowGravity();
+            isLowGravity = true;
         }
     }
 
-    public void restoreNormalGravity()
+    private void ActivateLowGravity()
     {
-        Debug.Log(gravityResetValue);
+        float newGravityValue = Physics.gravity.y * lowgravityValueMultiplyier;
+        Debug.Log(newGravityValue);
+        Physics.gravity = new Vector3(0, newGravityValue, 0);
+         
+    }
 
-        if (gm.upSideDown)
-        {
-            Physics.gravity = new Vector3(0, -gravityResetValue, 0);
-        }
-        else
-        {
-            Physics.gravity = new Vector3(0, gravityResetValue, 0);
-        }
 
-        
-        
+    private void RestoreNormalGravity()
+    {
+        float newGravityValue = Physics.gravity.y / lowgravityValueMultiplyier;
+        Debug.Log(newGravityValue);
+        Physics.gravity = new Vector3(0, newGravityValue, 0);
+
+
+
     }
 }
