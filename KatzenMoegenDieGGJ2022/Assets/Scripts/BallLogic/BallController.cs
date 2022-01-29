@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.Events;
 public class BallController : MonoBehaviour
 {
-    
+
+
     public float speed;
     public float maxspeed;
     Rigidbody rb;
@@ -139,7 +140,7 @@ public class BallController : MonoBehaviour
             yield return new WaitForEndOfFrame();
             time += Time.deltaTime * 8;
             Vector3 squash = new Vector3(1 / squashCurve.Evaluate(time), 1 / squashCurve.Evaluate(time), 1 * squashCurve.Evaluate(time));
-            transform.localScale = squash * 0.5f;
+            transform.localScale = squash ;
         }
         
     }
