@@ -17,19 +17,27 @@ public class ThrowController : MonoBehaviour
     
     bool hasBallInHand;
     public bool boxInHand;
+    bool loadThrow;
+    public float loadThrowTimer;
+    float currentLoadThrowTimer;
+    //Percentage = 1-currentLoadThrowTimer-loadThrowTimer;
+
     private void Awake()
     {
         pushEffect = ballPositionAnker.GetComponentInChildren<VisualEffect>();
         anim = GetComponentInChildren<Animator>();
         inputActions = new PlayerInput();
-        inputActions.Keyboard.Throw.performed += ctx => Throw();
+        inputActions.Keyboard.Throw.performed += ctx => LoadThrow();
+        inputActions.Keyboard.Throw.canceled += ctx => Throw();
 
         inputActions.Keyboard.ReturnBall.performed += ctx => RestorePosition();
         ball = FindObjectOfType<BallController>();
         ball.ResetToHand(ballPositionAnker);
 
         hasBallInHand = true;
+        currentLoadThrowTimer = loadThrowTimer;
     }
+
 
     
 
@@ -43,15 +51,35 @@ public class ThrowController : MonoBehaviour
         inputActions.Disable();
     }
 
+    public void LoadThrow()
+    {
+        loadThrow = true;
+    }
+
     public void Throw()
     {
         if (hasBallInHand && !boxInHand)
         {
+            loadThrow = false;
             anim.SetTrigger("shot");
             StartCoroutine(ThrowCourotine(throwDelay));
             hasBallInHand = false;
         }
         
+    }
+    private void Update()
+    {
+        if (loadThrow && currentLoadThrowTimer > 0)
+        {
+            if(currentLoadThrowTimer < 0)
+            {
+                currentLoadThrowTimer = 0;
+            }
+            else
+            {
+                currentLoadThrowTimer -= Time.deltaTime;
+            }
+        }
     }
 
     private void RestorePosition()
@@ -68,7 +96,8 @@ public class ThrowController : MonoBehaviour
     {
        
         yield return new WaitForSeconds(time);
-        ball.Throw(mainCam.transform.forward);
+        ball.Throw(mainCam.transform.forward,1-(currentLoadThrowTimer / loadThrowTimer));
+        currentLoadThrowTimer = loadThrowTimer;
         pushEffect.Play();
     }
 
@@ -89,7 +118,6 @@ public class ThrowController : MonoBehaviour
             t += Time.deltaTime / time;
             ball.SetDissolve(t);
             yield return new WaitForEndOfFrame();
-            Debug.Log(t);
         }
     }
 }

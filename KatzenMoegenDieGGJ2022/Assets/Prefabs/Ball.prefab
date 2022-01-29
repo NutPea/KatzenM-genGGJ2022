@@ -169,8 +169,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cd2a41a147396741a61f134e0cf82d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
-  maxspeed: 9
+  defaultSpeed: 10
+  extraSpeed: 30
+  maxspeed: 40
+  minPlayerBounceVelocity: 20
+  extraPlayerBounceVelocity: 20
+  playerInAirMultiplier: 2
   maxBounceCount: 2
   squashCurve:
     serializedVersion: 2

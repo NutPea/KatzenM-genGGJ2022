@@ -445,6 +445,25 @@ public class PlayerController : MonoBehaviour
         onCutSceneEnd.Invoke();
     }
 
+    public void BallVelocityAdd(float force,float extraJumpMultiplier,Transform ball)
+    {
+        Vector3 dir = ball.position - transform.position;
+        dir = dir.normalized;
 
+        Vector3 velocityVector = -ball.transform.forward * force;
+        if (IsGrounded())
+        {
+            velocityVector += Vector3.up * force;
+        }
+        else
+        {
+            if(Vector3.Angle(dir, Vector3.up) >= 150)
+            {
+                velocityVector *= extraJumpMultiplier;
+                Debug.Log("Extra");
+            }
+        }
+        rb.AddForce(velocityVector , ForceMode.Impulse);
+    }
 
 }
