@@ -21,11 +21,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 052a5c3e08bee6548bd7bb3df39132e5, type: 3}
+        m_Texture: {fileID: 2800000, guid: d5114c9ff20627b42824f48d15030cb9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: e7243a92a0e9e0045905f98a851d4350, type: 3}
+        m_Texture: {fileID: 2800000, guid: 53ded4b58c43b89498a9a4659881337d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -41,15 +41,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: c46872b525a15224bba4d0e3a734e8cb, type: 3}
+        m_Texture: {fileID: 2800000, guid: ce7bfa9d96a75264ba7e5ba75c43fb8e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 052a5c3e08bee6548bd7bb3df39132e5, type: 3}
+        m_Texture: {fileID: 2800000, guid: d5114c9ff20627b42824f48d15030cb9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: fb7df0a167a5ae84888eedec9db7e86b, type: 3}
+        m_Texture: {fileID: 2800000, guid: a181fba69ca564049b39ff41fb9f5995, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -96,7 +96,7 @@ Material:
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 0.6
+    - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -109,7 +109,7 @@ Material:
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &2370313771249337085
+--- !u!114 &4390648156714041248
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
