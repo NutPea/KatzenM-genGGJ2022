@@ -73,6 +73,14 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Push"",
+                    ""type"": ""Button"",
+                    ""id"": ""51b06f6b-17d1-4467-b290-d03f5c5ef0fd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -178,7 +186,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""f0ef9a2e-1360-4fbd-899d-cbe39338e0be"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -189,11 +197,22 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d4ea2fb5-a82b-4ef0-8ca2-a7d5affc9ed2"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ReturnBall"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5359a29a-d590-40e7-bd0e-4c07be5c8461"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Push"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -211,6 +230,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_Keyboard_Shift = m_Keyboard.FindAction("Shift", throwIfNotFound: true);
         m_Keyboard_Throw = m_Keyboard.FindAction("Throw", throwIfNotFound: true);
         m_Keyboard_ReturnBall = m_Keyboard.FindAction("ReturnBall", throwIfNotFound: true);
+        m_Keyboard_Push = m_Keyboard.FindAction("Push", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -267,6 +287,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Keyboard_Shift;
     private readonly InputAction m_Keyboard_Throw;
     private readonly InputAction m_Keyboard_ReturnBall;
+    private readonly InputAction m_Keyboard_Push;
     public struct KeyboardActions
     {
         private @PlayerInput m_Wrapper;
@@ -278,6 +299,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         public InputAction @Shift => m_Wrapper.m_Keyboard_Shift;
         public InputAction @Throw => m_Wrapper.m_Keyboard_Throw;
         public InputAction @ReturnBall => m_Wrapper.m_Keyboard_ReturnBall;
+        public InputAction @Push => m_Wrapper.m_Keyboard_Push;
         public InputActionMap Get() { return m_Wrapper.m_Keyboard; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -308,6 +330,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @ReturnBall.started -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnReturnBall;
                 @ReturnBall.performed -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnReturnBall;
                 @ReturnBall.canceled -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnReturnBall;
+                @Push.started -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnPush;
+                @Push.performed -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnPush;
+                @Push.canceled -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnPush;
             }
             m_Wrapper.m_KeyboardActionsCallbackInterface = instance;
             if (instance != null)
@@ -333,6 +358,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @ReturnBall.started += instance.OnReturnBall;
                 @ReturnBall.performed += instance.OnReturnBall;
                 @ReturnBall.canceled += instance.OnReturnBall;
+                @Push.started += instance.OnPush;
+                @Push.performed += instance.OnPush;
+                @Push.canceled += instance.OnPush;
             }
         }
     }
@@ -346,5 +374,6 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         void OnShift(InputAction.CallbackContext context);
         void OnThrow(InputAction.CallbackContext context);
         void OnReturnBall(InputAction.CallbackContext context);
+        void OnPush(InputAction.CallbackContext context);
     }
 }

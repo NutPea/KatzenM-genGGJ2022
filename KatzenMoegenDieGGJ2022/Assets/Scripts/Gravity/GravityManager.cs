@@ -8,7 +8,7 @@ public class GravityManager : MonoBehaviour
     PlayerController playerController;
 
     public float flipGravityTime = 1f;
-    bool upSideDown;
+    public bool upSideDown;
     // Start is called before the first frame update
     void Start()
     {

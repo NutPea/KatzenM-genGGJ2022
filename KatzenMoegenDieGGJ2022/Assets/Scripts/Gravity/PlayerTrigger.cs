@@ -11,9 +11,11 @@ public class PlayerTrigger : MonoBehaviour
 
     bool stayedOnTrigger;
 
+    public string Tag = "Player";
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag(Tag))
         {
             onEnterTriggerEvent.Invoke();
         }
@@ -21,7 +23,7 @@ public class PlayerTrigger : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag(Tag))
         {
             if (!stayedOnTrigger)
             {
@@ -41,7 +43,7 @@ public class PlayerTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag(Tag))
         {
             onExitTriggerEvent.Invoke();
         }

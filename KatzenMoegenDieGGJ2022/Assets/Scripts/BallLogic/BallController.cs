@@ -131,7 +131,7 @@ public class BallController : MonoBehaviour
         sphereOutside.material.SetFloat(clipKey, alpha);
     }
 
-   
+    
 
     IEnumerator AccelerateTo(float speed, float time, Vector3 direction)
     {
@@ -159,7 +159,6 @@ public class BallController : MonoBehaviour
             Vector3 squash = new Vector3(1 / squashCurve.Evaluate(time), 1 / squashCurve.Evaluate(time), 1 * squashCurve.Evaluate(time));
             transform.localScale = squash ;
         }
-        
     }
 
     
