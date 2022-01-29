@@ -144,7 +144,7 @@ public class BallController : MonoBehaviour
             {
                 Debug.DrawRay(item.point, item.normal * 100, Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f), 10f);
                 //rb.velocity = item.normal * speed;
-                transform.rotation = Quaternion.LookRotation(item.normal);
+                //transform.rotation = Quaternion.LookRotation(item.normal);
                 StartCoroutine(Squash());
                 //rb.velocity = Vector3.zero;
                 //StartCoroutine(AccelerateTo(speed, 0.25f, item.normal));
