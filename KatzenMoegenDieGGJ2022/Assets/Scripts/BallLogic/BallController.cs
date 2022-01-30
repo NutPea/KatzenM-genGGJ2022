@@ -11,6 +11,7 @@ public class BallController : MonoBehaviour
     public float minPlayerBounceVelocity;
     public float extraPlayerBounceVelocity;
     public float playerInAirMultiplier;
+    public float collisionEnableTime = 0.05f;
     Rigidbody rb;
     int bounces = 0;
     public int maxBounceCount = 2;
@@ -61,7 +62,7 @@ public class BallController : MonoBehaviour
             rb.velocity = direction * (defaultSpeed + extraSpeed * percentage);
             throwPercentage = percentage;
             rb.isKinematic = false;
-            StartCoroutine(ColActivateTimer(0.05f));
+            StartCoroutine(ColActivateTimer(collisionEnableTime));
             isStuck = false;
             transform.parent = null;
             isInHand = false;

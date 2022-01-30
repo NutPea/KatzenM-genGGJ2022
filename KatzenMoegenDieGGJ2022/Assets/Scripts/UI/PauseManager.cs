@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PauseManager : MonoBehaviour
 {
-
+    public int menuSceneIndex;
     bool isPaused;
     GameObject pauseMenuObject;
 
@@ -82,6 +82,10 @@ public class PauseManager : MonoBehaviour
         sensitivityContainer.sensitivity = sensSlider.value;
     }
 
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene(menuSceneIndex);
+    }
     public void Quit()
     {
         Application.Quit();

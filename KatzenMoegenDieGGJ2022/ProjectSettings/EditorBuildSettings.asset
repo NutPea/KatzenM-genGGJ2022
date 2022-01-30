@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: d5fc77f9aafc4ad49a8e38ca755a41b2
+  - enabled: 1
     path: Assets/Scenes/PhilipScene.unity
     guid: c75bb1f1a76d3e94cac3801441b7719c
   m_configObjects: {}
