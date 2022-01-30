@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("//------------------CutScene---------------//")]
     public float moveTime;
-    bool blockPlayerInput;
+    [HideInInspector] public bool blockPlayerInput;
     float currentMoveTime;
     public UnityEvent onCutSceneStart;
     public UnityEvent onCutSceneEnd;
@@ -450,7 +450,7 @@ public class PlayerController : MonoBehaviour
         Vector3 dir = ball.position - transform.position;
         dir = dir.normalized;
 
-        Vector3 velocityVector = -ball.transform.forward * force;
+        Vector3 velocityVector = ball.transform.forward * force;
         if (IsGrounded())
         {
             velocityVector += Vector3.up * force;
@@ -460,7 +460,6 @@ public class PlayerController : MonoBehaviour
             if(Vector3.Angle(dir, Vector3.up) >= 150)
             {
                 velocityVector *= extraJumpMultiplier;
-                Debug.Log("Extra");
             }
         }
         rb.AddForce(velocityVector , ForceMode.Impulse);

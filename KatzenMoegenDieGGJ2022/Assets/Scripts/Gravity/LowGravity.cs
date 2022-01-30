@@ -30,7 +30,6 @@ public class LowGravity : MonoBehaviour
     private void ActivateLowGravity()
     {
         float newGravityValue = Physics.gravity.y * lowgravityValueMultiplyier;
-        Debug.Log(newGravityValue);
         Physics.gravity = new Vector3(0, newGravityValue, 0);
          
     }

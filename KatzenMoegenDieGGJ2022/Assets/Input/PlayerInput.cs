@@ -81,6 +81,14 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""ba208a69-02ff-47c8-939a-71a4016327ee"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -215,6 +223,28 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""action"": ""Push"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""04ed6b1b-fc29-47ed-b05a-2fba10b02e13"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""17dcdb16-23f9-4d5d-a2c9-349b49c59db7"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -231,6 +261,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_Keyboard_Throw = m_Keyboard.FindAction("Throw", throwIfNotFound: true);
         m_Keyboard_ReturnBall = m_Keyboard.FindAction("ReturnBall", throwIfNotFound: true);
         m_Keyboard_Push = m_Keyboard.FindAction("Push", throwIfNotFound: true);
+        m_Keyboard_Pause = m_Keyboard.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -288,6 +319,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Keyboard_Throw;
     private readonly InputAction m_Keyboard_ReturnBall;
     private readonly InputAction m_Keyboard_Push;
+    private readonly InputAction m_Keyboard_Pause;
     public struct KeyboardActions
     {
         private @PlayerInput m_Wrapper;
@@ -300,6 +332,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         public InputAction @Throw => m_Wrapper.m_Keyboard_Throw;
         public InputAction @ReturnBall => m_Wrapper.m_Keyboard_ReturnBall;
         public InputAction @Push => m_Wrapper.m_Keyboard_Push;
+        public InputAction @Pause => m_Wrapper.m_Keyboard_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Keyboard; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -333,6 +366,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @Push.started -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnPush;
                 @Push.performed -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnPush;
                 @Push.canceled -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnPush;
+                @Pause.started -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_KeyboardActionsCallbackInterface = instance;
             if (instance != null)
@@ -361,6 +397,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @Push.started += instance.OnPush;
                 @Push.performed += instance.OnPush;
                 @Push.canceled += instance.OnPush;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -375,5 +414,6 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         void OnThrow(InputAction.CallbackContext context);
         void OnReturnBall(InputAction.CallbackContext context);
         void OnPush(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

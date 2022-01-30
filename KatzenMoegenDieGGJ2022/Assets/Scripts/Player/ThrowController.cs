@@ -20,6 +20,9 @@ public class ThrowController : MonoBehaviour
     bool loadThrow;
     public float loadThrowTimer;
     float currentLoadThrowTimer;
+
+    public Transform innerRotationBall;
+    public float innerBallRotationSpeed;
     //Percentage = 1-currentLoadThrowTimer-loadThrowTimer;
 
     private void Awake()
@@ -80,6 +83,11 @@ public class ThrowController : MonoBehaviour
                 currentLoadThrowTimer -= Time.deltaTime;
             }
         }
+        else
+        {
+             innerRotationBall.transform.Rotate(0, 0, innerBallRotationSpeed  * Time.deltaTime);
+        }
+
     }
 
     private void RestorePosition()

@@ -20,6 +20,7 @@ public class BallController : MonoBehaviour
     Collider col;
     private bool bounceCooldown;
     private bool isInHand = true;
+
     public UnityEvent returnEvent;
 
     public MeshRenderer ballLit1;
@@ -37,7 +38,8 @@ public class BallController : MonoBehaviour
     private void Awake()
     {
 
-        startScale = transform.localScale;
+        startScale = new Vector3(1.25f, 1.25f, 1.25f);
+
         returnEvent = new UnityEvent();
     }
     private void Start()
@@ -48,6 +50,7 @@ public class BallController : MonoBehaviour
 
         rb.useGravity = false;
         col = GetComponent<Collider>();
+        transform.localScale = startScale;
 
     }
 
@@ -62,6 +65,7 @@ public class BallController : MonoBehaviour
             isStuck = false;
             transform.parent = null;
             isInHand = false;
+            transform.localScale = startScale;
             foreach (Transform t in transform)
             {
                 foreach (Transform ct in t)

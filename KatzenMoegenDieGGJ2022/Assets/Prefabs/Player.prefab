@@ -996,8 +996,10 @@ MonoBehaviour:
   ballPositionAnker: {fileID: 744146026}
   mainCam: {fileID: 5330398018933961614}
   anim: {fileID: 0}
-  throwDelay: 0.3
+  throwDelay: 0.2
   catchDelay: 0.3
+  boxInHand: 0
+  loadThrowTimer: 1
 --- !u!1 &5330398018933961611
 GameObject:
   m_ObjectHideFlags: 0
