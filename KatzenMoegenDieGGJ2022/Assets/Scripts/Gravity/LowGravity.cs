@@ -6,7 +6,7 @@ public class LowGravity : MonoBehaviour
 {
     public float lowgravityValueMultiplyier;
     GravityManager gm;
-    bool isLowGravity;
+    bool isLowGravity =false;
 
     private void Start()
     {

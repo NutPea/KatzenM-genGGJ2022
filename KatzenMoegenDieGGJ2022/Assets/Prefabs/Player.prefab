@@ -1114,7 +1114,7 @@ MonoBehaviour:
   jumpBufferTimer: 0.75
   currentJumpBufferTimer: 0.5
   forceAired: 0
-  moveTime: 0
+  moveTime: 1
   blockPlayerInput: 0
   onCutSceneStart:
     m_PersistentCalls:

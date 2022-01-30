@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 6979613266272572418}
   - component: {fileID: 6979613266272572417}
   - component: {fileID: 6979613266272572416}
-  - component: {fileID: 6979613266272572423}
   - component: {fileID: 872114823}
+  - component: {fileID: 8173909742936634314}
   m_Layer: 0
   m_Name: LaserGate
   m_TagString: Untagged
@@ -83,20 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6979613266272572423
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6979613266272572422}
-  m_Material: {fileID: 13400000, guid: 73fe6d4a1ddd9dc4ca0e748f53ddc950, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!82 &872114823
 AudioSource:
   m_ObjectHideFlags: 0
@@ -202,3 +188,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &8173909742936634314
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6979613266272572422}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 0.3, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}

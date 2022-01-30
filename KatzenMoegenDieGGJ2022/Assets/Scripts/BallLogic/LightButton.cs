@@ -31,12 +31,14 @@ public class LightButton : MonoBehaviour
     {
         StartCoroutine(ColorFadeOn());
         StartCoroutine(Deactivate(activeTime));
+        activateEvent.Invoke();
         impactParticles.Play();
     }
 
     IEnumerator Deactivate(float time)
     {
         yield return new WaitForSeconds(time);
+        deactivateEvent.Invoke();
         StartCoroutine(ColorFadeOff());
 
     }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1655765456215627466}
   - component: {fileID: 4948221394290509722}
   - component: {fileID: 2428928594606577964}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Box_LowP_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6782442823988105231}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: P_Box_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
