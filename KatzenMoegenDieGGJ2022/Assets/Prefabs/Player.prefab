@@ -1062,7 +1062,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upsideDown: 0
-  movementSpeed: 7.25
+  movementSpeed: 7.5
   sprintSpeed: 11
   groundLayer:
     serializedVersion: 2
@@ -1071,13 +1071,13 @@ MonoBehaviour:
   stopMovementUntilHitGroundAgain: 0
   sensitivityContainer: {fileID: 11400000, guid: d9a7ff705f8538445a6dfb791f223fc7, type: 2}
   cameraMovementVector: {x: 0, y: 0.1, z: 0}
-  cameraWalkSpeed: 8
+  cameraWalkSpeed: 4.65
   cameraSprintSpeed: 10
   cameraSideMovRotValue: 0.5
   cameraFrontMovRotValue: 0.5
   jumpVelocity: 10.5
   extraGravity: -3.05
-  jumpTime: 1
+  jumpTime: 0.84
   jumpFallOf:
     serializedVersion: 2
     m_Curve:
@@ -1181,7 +1181,7 @@ MonoBehaviour:
   boxInHand: 0
   loadThrowTimer: 1
   innerRotationBall: {fileID: 7198572069118477548}
-  innerBallRotationSpeed: 1000
+  innerBallRotationSpeed: 500
   notThrowTimer: 3
   throwClip: {fileID: 8300000, guid: 053140bbb810ba540887c39c0a50abc3, type: 3}
   returnClip: {fileID: 8300000, guid: 8f5bfe34a8c3b42438e254905eaa174a, type: 3}
