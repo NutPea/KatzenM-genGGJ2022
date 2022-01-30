@@ -59,4 +59,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b0a499c349f66b4a8c060e0fc0e4a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lowgravityValueMultiplyier: 0.5
+  lowgravityValueMultiplyier: 0.09
