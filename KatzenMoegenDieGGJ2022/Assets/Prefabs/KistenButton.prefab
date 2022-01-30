@@ -1,5 +1,33 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!64 &8511972706523010928
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26066884616658694}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1348747332430518568, guid: 767b5b5eea1234342b55439806b35cd7, type: 3}
+--- !u!64 &8511972706523010929
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582470634061849451}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6514981713759940066, guid: 767b5b5eea1234342b55439806b35cd7, type: 3}
 --- !u!1 &4050457107910028085
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,34 +229,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!64 &8511972706523010928
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 26066884616658694}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1348747332430518568, guid: 767b5b5eea1234342b55439806b35cd7, type: 3}
---- !u!64 &8511972706523010929
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 582470634061849451}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 6514981713759940066, guid: 767b5b5eea1234342b55439806b35cd7, type: 3}
 --- !u!1001 &1398312469953360391
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -291,11 +291,11 @@ PrefabInstance:
     - target: {fileID: -6112263326023615127, guid: 767b5b5eea1234342b55439806b35cd7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 591b72fbb440a424e87da0b93238a88c, type: 2}
+      objectReference: {fileID: 2100000, guid: 0e1775d464c2b4b41bb6a1de1fac47f9, type: 2}
     - target: {fileID: 801527444598111238, guid: 767b5b5eea1234342b55439806b35cd7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 591b72fbb440a424e87da0b93238a88c, type: 2}
+      objectReference: {fileID: 2100000, guid: 0e1775d464c2b4b41bb6a1de1fac47f9, type: 2}
     - target: {fileID: 919132149155446097, guid: 767b5b5eea1234342b55439806b35cd7, type: 3}
       propertyPath: m_Name
       value: Kisten_Button_LowP_01

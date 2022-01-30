@@ -63,7 +63,7 @@ public class ThrowController : MonoBehaviour
 
     public void LoadThrow()
     {
-        loadThrow = true;
+        loadThrow = true && hasBallInHand;
     }
 
     public void Throw()
@@ -75,6 +75,7 @@ public class ThrowController : MonoBehaviour
             StartCoroutine(ThrowCourotine(throwDelay));
             hasBallInHand = false;
             currentNotThrowTimer = notThrowTimer;
+            currentLoadThrowTimer = loadThrowTimer;
         }
         
     }
