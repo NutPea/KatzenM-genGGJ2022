@@ -23,6 +23,11 @@ public class ThrowController : MonoBehaviour
 
     public Transform innerRotationBall;
     public float innerBallRotationSpeed;
+
+    public float notThrowTimer;
+    float currentNotThrowTimer;
+
+    public float secretAnimationPropabiility;
     //Percentage = 1-currentLoadThrowTimer-loadThrowTimer;
 
     private void Awake()
@@ -39,6 +44,7 @@ public class ThrowController : MonoBehaviour
 
         hasBallInHand = true;
         currentLoadThrowTimer = loadThrowTimer;
+        currentNotThrowTimer = notThrowTimer;
     }
 
 
@@ -67,6 +73,7 @@ public class ThrowController : MonoBehaviour
             anim.SetTrigger("shot");
             StartCoroutine(ThrowCourotine(throwDelay));
             hasBallInHand = false;
+            currentNotThrowTimer = notThrowTimer;
         }
         
     }
@@ -86,6 +93,24 @@ public class ThrowController : MonoBehaviour
         else
         {
              innerRotationBall.transform.Rotate(0, 0, innerBallRotationSpeed  * Time.deltaTime);
+        }
+
+
+        if (hasBallInHand)
+        {
+            if(currentNotThrowTimer < 0)
+            {
+                float randomePercentage = Random.Range(0.0f, 1.0f);
+                if(randomePercentage > secretAnimationPropabiility)
+                {
+                    anim.SetTrigger("secret");
+                }
+                currentNotThrowTimer = notThrowTimer;
+            }
+            else
+            {
+                currentNotThrowTimer -= Time.deltaTime;
+            }
         }
 
     }

@@ -927,7 +927,7 @@ MonoBehaviour:
     m_Bits: 64
   groundCheckDistance: 1.15
   stopMovementUntilHitGroundAgain: 0
-  sensetivity: 0.5
+  sensitivityContainer: {fileID: 0}
   cameraMovementVector: {x: 0, y: 0.1, z: 0}
   cameraWalkSpeed: 8
   cameraSprintSpeed: 10
@@ -974,6 +974,7 @@ MonoBehaviour:
   currentJumpBufferTimer: 0.5
   forceAired: 0
   moveTime: 0
+  blockPlayerInput: 0
   onCutSceneStart:
     m_PersistentCalls:
       m_Calls: []
@@ -1000,6 +1001,11 @@ MonoBehaviour:
   catchDelay: 0.3
   boxInHand: 0
   loadThrowTimer: 1
+  innerRotationBall: {fileID: 0}
+  innerBallRotationSpeed: 1000
+  notThrowTimer: 3
+  currentNotThrowTimer: 0
+  secretAnimationPropabiility: 0.95
 --- !u!1 &5330398018933961611
 GameObject:
   m_ObjectHideFlags: 0
