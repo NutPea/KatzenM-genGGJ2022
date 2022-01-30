@@ -9942,7 +9942,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1344827526}
     - target: {fileID: 1738256348, guid: 23ff540c1389c374bb65945793950dc7, type: 3}
+      propertyPath: deactivateEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1344827526}
+    - target: {fileID: 1738256348, guid: 23ff540c1389c374bb65945793950dc7, type: 3}
       propertyPath: activateEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeGravity
+      objectReference: {fileID: 0}
+    - target: {fileID: 1738256348, guid: 23ff540c1389c374bb65945793950dc7, type: 3}
+      propertyPath: deactivateEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ChangeGravity
       objectReference: {fileID: 0}
     - target: {fileID: 1738256349, guid: 23ff540c1389c374bb65945793950dc7, type: 3}
