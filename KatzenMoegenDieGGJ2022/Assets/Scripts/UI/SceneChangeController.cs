@@ -18,6 +18,7 @@ public class SceneChangeController : MonoBehaviour
 
     public void PanelInTransition()
     {
+        panelImage.gameObject.SetActive(true);
         gameObject.transform.localScale = new Vector3(1, 1, 1);
         Color currPanelColor = panelImage.color;
         currPanelColor.a = 1;

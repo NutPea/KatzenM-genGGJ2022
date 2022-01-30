@@ -107,6 +107,7 @@ MonoBehaviour:
   onTriggerColliderChangeEvent:
     m_PersistentCalls:
       m_Calls: []
+  Tag: Player
 --- !u!1001 &8979022235767717113
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -124,7 +125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2164809576395017239, guid: 815ff402513962e4fb68451dcf691fa3, type: 3}
       propertyPath: m_Name
-      value: Standart_Door
+      value: Auromatik_Door
       objectReference: {fileID: 0}
     - target: {fileID: 2164809576395017239, guid: 815ff402513962e4fb68451dcf691fa3, type: 3}
       propertyPath: m_Layer
@@ -192,6 +193,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2164809578237460175, guid: 815ff402513962e4fb68451dcf691fa3, type: 3}
       propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4046580231891449078, guid: 815ff402513962e4fb68451dcf691fa3, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7438188865584049171, guid: 815ff402513962e4fb68451dcf691fa3, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9155835236293208384, guid: 815ff402513962e4fb68451dcf691fa3, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9155835236293208384, guid: 815ff402513962e4fb68451dcf691fa3, type: 3}
+      propertyPath: m_SelectedEdges.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9155835236293208384, guid: 815ff402513962e4fb68451dcf691fa3, type: 3}
+      propertyPath: m_SelectedFaces.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9155835236293208384, guid: 815ff402513962e4fb68451dcf691fa3, type: 3}
+      propertyPath: m_SelectedVertices.Array.size
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
