@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
     [HideInInspector] public bool stopMovementUntilHitGroundAgain;
     [Header("//------------------Camera---------------------//")]
-    public float sensetivity = 30;
+    public SensitivityContainer sensitivityContainer;
     float cameraPitch = 0.0f;
 
 
@@ -114,12 +114,12 @@ public class PlayerController : MonoBehaviour
         Vector2 mouseDelta = inputActions.Keyboard.MouseMovement.ReadValue<Vector2>();
         mouseDelta = mouseDelta.normalized;
 
-        cameraPitch -= mouseDelta.y * sensetivity;
+        cameraPitch -= mouseDelta.y * sensitivityContainer.sensitivity;
         cameraPitch = Mathf.Clamp(cameraPitch, -90, 90f);
 
         playerCamera.localEulerAngles = Vector3.right * cameraPitch;
 
-        transform.Rotate(Vector3.up * mouseDelta.x * sensetivity);
+        transform.Rotate(Vector3.up * mouseDelta.x * sensitivityContainer.sensitivity);
     }
 
     public void Jump()

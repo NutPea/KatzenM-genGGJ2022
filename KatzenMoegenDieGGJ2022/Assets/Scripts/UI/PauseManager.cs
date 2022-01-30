@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class PauseManager : MonoBehaviour
 
     PlayerInput inputActions;
     PlayerController playerController;
+    public SensitivityContainer sensitivityContainer;
+    public Slider sensSlider;
 
     private void Awake()
     {
@@ -60,6 +63,7 @@ public class PauseManager : MonoBehaviour
 
     public void Pause()
     {
+        sensSlider.value = sensitivityContainer.sensitivity;
         pauseMenuObject.SetActive(true);
         playerController.blockPlayerInput = true;
         Cursor.lockState = CursorLockMode.None;
@@ -71,6 +75,11 @@ public class PauseManager : MonoBehaviour
     {
         Resume();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void ChangeSensitivity()
+    {
+        sensitivityContainer.sensitivity = sensSlider.value;
     }
 
     public void Quit()
