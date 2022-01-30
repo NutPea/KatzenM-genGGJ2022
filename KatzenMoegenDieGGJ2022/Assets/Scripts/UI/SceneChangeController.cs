@@ -12,6 +12,7 @@ public class SceneChangeController : MonoBehaviour
     public LeanTweenType tweenType;
     void Start()
     {
+        panelImage = GameObject.FindGameObjectWithTag("GameCanvas").transform.GetChild(0).GetComponent<Image>();
         PanelInTransition();
     }
 

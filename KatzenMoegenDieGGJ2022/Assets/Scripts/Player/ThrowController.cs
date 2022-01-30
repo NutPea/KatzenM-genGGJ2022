@@ -71,7 +71,15 @@ public class ThrowController : MonoBehaviour
         if (hasBallInHand && !boxInHand)
         {
             loadThrow = false;
-            anim.SetTrigger("shot");
+            anim.SetFloat("chargeAmount", 0);
+            if(1 - (currentLoadThrowTimer / loadThrowTimer) < 0.1)
+            {
+                anim.SetTrigger("shotDirect");
+            }
+            else
+            {
+                anim.SetTrigger("shot");
+            }
             StartCoroutine(ThrowCourotine(throwDelay));
             hasBallInHand = false;
             currentNotThrowTimer = notThrowTimer;
@@ -89,6 +97,7 @@ public class ThrowController : MonoBehaviour
             }
             else
             {
+                anim.SetFloat("chargeAmount", 1 - (currentLoadThrowTimer / loadThrowTimer));
                 currentLoadThrowTimer -= Time.deltaTime;
             }
         }

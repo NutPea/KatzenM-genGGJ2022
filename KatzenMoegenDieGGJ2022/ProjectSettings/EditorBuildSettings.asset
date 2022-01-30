@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PhilipScene.unity
     guid: c75bb1f1a76d3e94cac3801441b7719c
+  - enabled: 1
+    path: Assets/Scenes/Level/P_Level_01.unity
+    guid: 8d361a0f8da645b4ea2b4e701b43b009
   m_configObjects: {}
