@@ -920,21 +920,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upsideDown: 0
-  movementSpeed: 6
-  sprintSpeed: 10
+  movementSpeed: 7.25
+  sprintSpeed: 11
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   groundCheckDistance: 1.15
   stopMovementUntilHitGroundAgain: 0
-  sensitivityContainer: {fileID: 0}
+  sensitivityContainer: {fileID: 11400000, guid: d9a7ff705f8538445a6dfb791f223fc7, type: 2}
   cameraMovementVector: {x: 0, y: 0.1, z: 0}
   cameraWalkSpeed: 8
   cameraSprintSpeed: 10
-  cameraSideMovRotValue: 1
-  cameraFrontMovRotValue: 1
-  jumpVelocity: 11.5
-  extraGravity: -3
+  cameraSideMovRotValue: 0.5
+  cameraFrontMovRotValue: 0.5
+  jumpVelocity: 10.5
+  extraGravity: -3.05
   jumpTime: 1
   jumpFallOf:
     serializedVersion: 2
@@ -942,15 +942,15 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0.0000010179356
       value: 0
-      inSlope: 1.7358773
-      outSlope: 1.7358773
+      inSlope: 1.8490567
+      outSlope: 1.8490567
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.1670117
+      outWeight: 0.17479749
     - serializedVersion: 3
-      time: 0.35755762
-      value: 0.5600219
+      time: 0.29922327
+      value: 0.56473684
       inSlope: 1.4991767
       outSlope: 1.4991767
       tangentMode: 0
@@ -977,10 +977,34 @@ MonoBehaviour:
   blockPlayerInput: 0
   onCutSceneStart:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: DoorController, Assembly-CSharp
+        m_MethodName: OpenDoor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onCutSceneEnd:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: DoorController, Assembly-CSharp
+        m_MethodName: CloseDoor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1053995106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1004,7 +1028,6 @@ MonoBehaviour:
   innerRotationBall: {fileID: 0}
   innerBallRotationSpeed: 1000
   notThrowTimer: 3
-  currentNotThrowTimer: 0
   secretAnimationPropabiility: 0.95
 --- !u!1 &5330398018933961611
 GameObject:
