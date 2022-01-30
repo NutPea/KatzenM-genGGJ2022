@@ -23,8 +23,12 @@ public class TextPopUp : MonoBehaviour
 
     public void OnPopAway()
     {
-        textObject.SetActive(false);
         LeanTween.cancel(textObject);
-        LeanTween.scaleX(textObject, 0, time).setEase(type);
+        LeanTween.scaleX(textObject, 0, time).setEase(type).setOnComplete(OnDeactivate);
+    }
+
+    void OnDeactivate()
+    {
+        textObject.SetActive(false);
     }
 }
