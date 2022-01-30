@@ -407,9 +407,9 @@ GameObject:
   - component: {fileID: 2578441436638297485}
   - component: {fileID: 8904477018057458190}
   - component: {fileID: 7201047229721943784}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: HandCamera
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
