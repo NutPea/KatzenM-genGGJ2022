@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76dbcb174fd8fc748928b0e1dee3fd73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeTime: 5
+  activeTime: 8
   lightComponent: {fileID: 7189269526094608566}
   offColor: {r: 1, g: 1, b: 1, a: 0}
   onColor: {r: 0.25098038, g: 0.8139105, b: 1, a: 0}
@@ -340,7 +340,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7189269526094608569}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 0, y: 0.231, z: 0}
+  m_LocalPosition: {x: 0, y: 1.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5227192594447340439}
