@@ -28803,6 +28803,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2923314483901298417, guid: 63e9c5121a5032a4683d481307d6babf, type: 3}
+      propertyPath: targetSceneIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923314483901298419, guid: 63e9c5121a5032a4683d481307d6babf, type: 3}
+      propertyPath: m_Size.x
+      value: 3.2929378
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923314483901298419, guid: 63e9c5121a5032a4683d481307d6babf, type: 3}
+      propertyPath: m_Size.y
+      value: 4.3059673
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923314483901298419, guid: 63e9c5121a5032a4683d481307d6babf, type: 3}
+      propertyPath: m_Center.x
+      value: -1.1464694
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923314483901298419, guid: 63e9c5121a5032a4683d481307d6babf, type: 3}
+      propertyPath: m_Center.y
+      value: 1.2861121
+      objectReference: {fileID: 0}
     - target: {fileID: 2923314483901298430, guid: 63e9c5121a5032a4683d481307d6babf, type: 3}
       propertyPath: m_RootOrder
       value: 16
