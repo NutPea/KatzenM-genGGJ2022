@@ -312,7 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76dbcb174fd8fc748928b0e1dee3fd73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeTime: 1
+  activeTime: 5
   lightComponent: {fileID: 7189269526158441250}
   offColor: {r: 1, g: 1, b: 1, a: 0}
   onColor: {r: 1, g: 0.24905658, b: 0.24905658, a: 0}

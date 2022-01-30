@@ -10,6 +10,7 @@ public class ThrowController : MonoBehaviour
     public Transform ballPositionAnker;
     public Transform mainCam;
     VisualEffect pushEffect;
+    public VisualEffect loadEffect;
     public Animator anim;
 
     public float throwDelay;
@@ -39,7 +40,7 @@ public class ThrowController : MonoBehaviour
         inputActions.Keyboard.Throw.canceled += ctx => Throw();
 
         inputActions.Keyboard.ReturnBall.performed += ctx => RestorePosition();
-        ball = FindObjectOfType<BallController>();
+        
         ball.ResetToHand(ballPositionAnker);
 
         hasBallInHand = true;
@@ -112,6 +113,17 @@ public class ThrowController : MonoBehaviour
                 currentNotThrowTimer -= Time.deltaTime;
             }
         }
+
+        float loadStrength;
+        if (hasBallInHand)
+        {
+            loadStrength = 1 - currentLoadThrowTimer / loadThrowTimer;
+        }
+        else
+        {
+            loadStrength = 0;
+        }
+        loadEffect.SetFloat("_loadStrength", loadStrength);
 
     }
 

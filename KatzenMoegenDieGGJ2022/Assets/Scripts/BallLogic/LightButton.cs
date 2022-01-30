@@ -14,7 +14,7 @@ public class LightButton : MonoBehaviour
     public Color onColor;
     private float fadeState = 0;
     public VisualEffect impactParticles;
-    private MeshRenderer mr;
+    [SerializeField] private MeshRenderer meshRendererEmission;
     private static int emissionColorKey = -1;
     public bool isActive;
     public UnityEvent activateEvent;
@@ -24,7 +24,7 @@ public class LightButton : MonoBehaviour
     {
         if (emissionColorKey == -1)
             emissionColorKey = Shader.PropertyToID("_EmissionColor");
-        mr = GetComponent<MeshRenderer>();
+        
     }
 
     public void ActivateButton()
@@ -49,7 +49,7 @@ public class LightButton : MonoBehaviour
             fadeState += Time.deltaTime / 0.5f;
             Color color = Color.Lerp(offColor, onColor, fadeState);
             lightComponent.color = color;
-            mr.material.SetColor(emissionColorKey ,color);
+            meshRendererEmission.material.SetColor(emissionColorKey ,color);
         }
         fadeState = 1;
         
@@ -65,7 +65,7 @@ public class LightButton : MonoBehaviour
             fadeState -= Time.deltaTime / 0.5f;
             Color color = Color.Lerp(offColor, onColor, fadeState);
             lightComponent.color = color;
-            mr.material.SetColor(emissionColorKey, color);
+            meshRendererEmission.material.SetColor(emissionColorKey, color);
         }
         fadeState = 0;
     }
