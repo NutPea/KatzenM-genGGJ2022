@@ -74,7 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c49aaaea60578374daf47de4bdea4403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetSceneIndex: 2
+  targetSceneIndex: 3
   panelImage: {fileID: 0}
   transitionTime: 1
   tweenType: 11
