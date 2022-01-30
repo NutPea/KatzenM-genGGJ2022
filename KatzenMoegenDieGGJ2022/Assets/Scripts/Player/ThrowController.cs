@@ -28,6 +28,11 @@ public class ThrowController : MonoBehaviour
     public float notThrowTimer;
     float currentNotThrowTimer;
 
+    AudioSource audioSource;
+    public AudioClip throwClip;
+    public AudioClip returnClip;
+    public AudioClip chargeUpClip;
+
     public float secretAnimationPropabiility;
     //Percentage = 1-currentLoadThrowTimer-loadThrowTimer;
 
@@ -46,6 +51,7 @@ public class ThrowController : MonoBehaviour
         hasBallInHand = true;
         currentLoadThrowTimer = loadThrowTimer;
         currentNotThrowTimer = notThrowTimer;
+        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -64,12 +70,23 @@ public class ThrowController : MonoBehaviour
     public void LoadThrow()
     {
         loadThrow = true && hasBallInHand;
+        if (loadThrow)
+        {
+            audioSource.Stop();
+            audioSource.clip = chargeUpClip;
+            audioSource.loop = true;
+            audioSource.Play();
+        }
+            
     }
 
     public void Throw()
     {
         if (hasBallInHand && !boxInHand)
         {
+            audioSource.Stop();
+            audioSource.loop = false;
+            audioSource.PlayOneShot(throwClip);
             loadThrow = false;
             anim.SetFloat("chargeAmount", 0);
             if(1 - (currentLoadThrowTimer / loadThrowTimer) < 0.1)
@@ -158,6 +175,8 @@ public class ThrowController : MonoBehaviour
 
     IEnumerator CatchRoutine(float time)
     {
+        audioSource.Stop();
+        audioSource.PlayOneShot(returnClip);
         float t = 1;
         while(t > 0)
         {

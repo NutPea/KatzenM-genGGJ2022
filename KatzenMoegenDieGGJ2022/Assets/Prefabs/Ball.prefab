@@ -175,6 +175,7 @@ MonoBehaviour:
   minPlayerBounceVelocity: 20
   extraPlayerBounceVelocity: 20
   playerInAirMultiplier: 2
+  collisionEnableTime: 0.05
   maxBounceCount: 2
   squashCurve:
     serializedVersion: 2
